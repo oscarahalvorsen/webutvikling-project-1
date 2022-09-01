@@ -1,5 +1,5 @@
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Monaco', monospace;  
     min-height: 100%;
     min-width: 100%;
     margin: 0px;
@@ -10,114 +10,21 @@ html {
     width: 100%;
 }
 
-svg,
-canvas {
+svg, canvas {
     display: block;
     margin: auto;
 }
 
-#header-container {
-    background: #00c3ff;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 0.25fr 1fr 0.25fr 0.25fr 20fr;
-    height: 100vh;
-    width: 100%;
-    grid-template-areas: "header header""painting-svg painting-canvas""reset-button reset-button""documentation-button documentation-button""documentation documentation";
-    padding-bottom: 100px;
-    position: relative;
-    /* Footer height */
-}
-
-.item-1 {
+.header {
     grid-area: header;
     justify-content: center;
-}
-
-.item-2 {
-    grid-area: painting-svg;
-}
-
-.item-3 {
-    grid-area: painting-canvas;
-}
-
-.item-6 {
-    grid-area: reset-button;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-}
-
-.item-4 {
-    grid-area: documentation-button;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.item-5 {
-    grid-area: documentation;
-    margin: 15px;
-    padding-bottom: 10px;
-}
-
-#documentation {
-    bottom: 0;
-    display: none;
-}
-
-.horizontal-flex-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.vertical-flex-box {
+    color: #f0f0f0; 
+    background-color: #3A6B35;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-h3,
-h1,
-p {
+h1, h2, h3, p {
     text-align: center;
-}
-
-button {
-    background-color: #00abfa;
-    border: none;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
-    width: 253px;
-    min-width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    outline: 0;
-}
-
-button:hover {
-    background-color: #ffffff;
-    border: 2px solid #00abfa;
-    color: #00abfa;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-}
-
-@media only screen and (max-width: 600px) {
-    .container {
-        grid-template-columns: 100%;
-        grid-template-rows: 0.25fr 1fr 1fr 0.25fr 0.25fr 1000px;
-        grid-template-areas: "header""painting-svg""painting-canvas""reset-button""documentation-button""documentation";
-    }
 }
