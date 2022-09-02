@@ -2,42 +2,58 @@
 <html lang="en">
 
 <head>
-    <title>Winter wonderland</title>
+    <title>Wind simulator</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/snowmanSVG.js"></script>
-    <script src="js/snowmanCanvas.js"></script>
-    <style></style>
+    <script src="js/svg.js"></script>
+    <script src="js/canvas.js"></script>
 </head>
 
 <body>
-    <div id="page-container">
-      <div >
-        <svg width="600" height="500" class="svg" id="svgSnowman" style="background-color: rgb(135, 206,235); margin-top: 100px">
-          <!-- grass -->
-          <g transform="translate(0,-0)">
-            <rect y="350" width="600" height="150" style="fill:green" />
-            <path  d="m 0, 350 q 200 -50 400 0" style="fill:green;"/>
-            <path  d="m 400, 350 q 200 50 400 0" style="fill:rgb(135, 206,235);"/>
-          </g>
-          <!-- cloud1 -->
-          <g transform="translate(-300,-460)">
-            <path  d="m 465.83684,466.9869 c -18.8823,0 -37.6499,7.7751 -51.0017,21.127 -8.4122,8.4121 -14.6043,18.9734 -18.0383,30.3583 -8.2539,1.5581 -16.0492,5.5866 -21.9931,11.5304 -7.7473,7.7473 -12.2573,18.6331 -12.2573,29.5895 0,10.9565 4.51,21.8458 12.2573,29.5931 7.7474,7.7473 18.6367,12.2573 29.5931,12.2573 l 187.4365,0 c 6.9935,0 13.9453,-2.8775 18.8904,-7.8224 4.9452,-4.9451 7.8227,-11.8971 7.8227,-18.8906 0,-6.9935 -2.8775,-13.9417 -7.8227,-18.8868 -4.9147,-4.9149 -11.8119,-7.784 -18.7617,-7.8193 -1.3562,-12.6709 -7.0967,-24.867 -16.1148,-33.8851 -10.3847,-10.3847 -24.9798,-16.4314 -39.666,-16.4314 -3.5656,0 -7.1233,0.3656 -10.6192,1.0539 -2.5582,-3.8175 -5.4715,-7.3951 -8.7235,-10.6469 -13.3518,-13.3519 -32.1193,-21.127 -51.0017,-21.127 z" style="fill:#808080;fill-opacity:1"/>
-          </g>
-          <!-- cloud2 -->
-          <g transform="translate(-0,-420)">
-            <path  d="m 465.83684,466.9869 c -18.8823,0 -37.6499,7.7751 -51.0017,21.127 -8.4122,8.4121 -14.6043,18.9734 -18.0383,30.3583 -8.2539,1.5581 -16.0492,5.5866 -21.9931,11.5304 -7.7473,7.7473 -12.2573,18.6331 -12.2573,29.5895 0,10.9565 4.51,21.8458 12.2573,29.5931 7.7474,7.7473 18.6367,12.2573 29.5931,12.2573 l 187.4365,0 c 6.9935,0 13.9453,-2.8775 18.8904,-7.8224 4.9452,-4.9451 7.8227,-11.8971 7.8227,-18.8906 0,-6.9935 -2.8775,-13.9417 -7.8227,-18.8868 -4.9147,-4.9149 -11.8119,-7.784 -18.7617,-7.8193 -1.3562,-12.6709 -7.0967,-24.867 -16.1148,-33.8851 -10.3847,-10.3847 -24.9798,-16.4314 -39.666,-16.4314 -3.5656,0 -7.1233,0.3656 -10.6192,1.0539 -2.5582,-3.8175 -5.4715,-7.3951 -8.7235,-10.6469 -13.3518,-13.3519 -32.1193,-21.127 -51.0017,-21.127 z" style="fill:#808080;fill-opacity:1"/>
-          </g>
-          <circle cx="20" cy="20" r="60" fill="#fdca24"/>
-          <!-- windmill -->
-          <polygon points="200,420 212,420 210,200 202,200" style="fill: white" />
-        ¨</svg>
-      </div>
-        
-      <div>
-
-      </div>
+    <div class="container " id="container">
+        <div class="header">
+            <h1 id="header">DARTS</h1>
+        </div>
+        <div class="left-div">
+            <!--svg-->
+            <svg width="600" height="600" id="svg">
+                <!-- board -->
+                <!-- <g>
+                  <circle cx="300" cy="300" r="200" fill="black" stroke-width="2px" stroke="grey"/>
+                  <circle cx="300" cy="300" r="180" fill="#F7F6DC" stroke-width="2px" stroke="grey"/>
+                  <circle cx="300" cy="300" r="120" fill="black" stroke-width="2px" stroke="grey"/>
+                  <circle cx="300" cy="300" r="100" fill="#F7F6DC" stroke-width="2px" stroke="grey"/>
+                  <circle cx="300" cy="300" r="20" fill="black" stroke-width="2px" stroke="grey"/>
+                  <circle cx="300" cy="300" r="5" fill="#F7F6DC" stroke-width="2px" stroke="grey"/>
+                </g> -->
+                <!-- dart -->
+                <g transform="translate(0,-100)">
+                  <polygon points="301.5,230 300.1,200 299.9,200 298.5,230" fill="black"></polygon>
+                  <polygon points="297,310 303,310 306,240 303,230 297,230 294,240" fill="grey" />
+                  <polygon points="300,330 314,327 312,309 300,300 288,309 286,327" fill="grey"></polygon>
+                </g>
+                <g transform="translate(0,40)">
+                  <polygon points="301.5,230 300.1,200 299.9,200 298.5,230" fill="black"></polygon>
+                  <polygon points="297,310 303,310 306,240 303,230 297,230 294,240" fill="grey" />
+                  <polygon points="300,340 316,336 314,310 300,300 286,310 284,336" fill="grey"></polygon>
+                </g>
+                <!-- <g  transform="translate(0,-200)">
+                  <polygon points="302,240 300,200 298,240" fill="black"></polygon>
+                  <polygon points="296,360 304,360 308,260 304,240 296,240 292,260" fill="grey" />
+                  <polygon points="300,400 320,396 318,370 300,356 282,370 280,396" fill="grey"></polygon>
+                </g> -->
+                <!-- <g>
+                  <polygon points="302,320 301,260 299,260 298,320" fill="black"></polygon>
+                  <polygon points="294,580 306,580 310,360 306,320 294,320 290,360" fill="grey" />
+                  <polygon points="300,600 340,590 336,540 300,520 264,540 260,590" fill="grey"></polygon>
+                </g> -->
+            </svg>
+            <h2>SVG</h2>
+        </div>
+        <div class="right-div">
+            <canvas width="600" height="600" id="canvas">
+            </canvas>
+            <h2>CANVAS</h2>
+        </div>
     </div>
 </body>
 
