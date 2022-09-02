@@ -18,8 +18,8 @@ svg, canvas {
 .header {
     grid-area: header;
     justify-content: center;
-    color: #f0f0f0; 
-    background-color: #3A6B35;
+    color: #F7F6DC;
+    background-color: #7FB77E;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,3 +28,18 @@ svg, canvas {
 h1, h2, h3, p {
     text-align: center;
 }
+
+.left-div {
+    background-color: #F7F6DC;
+    position: absolute;
+    left: 0px;
+    width: 50%;
+  }
+  
+.right-div {
+    background-color: #F7F6DC;
+    position: absolute;
+    right: 0px;
+    width: 50%;
+    
+  }
