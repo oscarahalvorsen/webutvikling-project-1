@@ -1,32 +1,56 @@
-let alternate = true;
+var boardRadii = [160, 144, 88, 72, 16, 4]
+
+var boardColors = ["#404040", "#F7F6DC"]
+
+var needle = [
+    [1.5,30], 
+    [0,00],
+    [-1.5,30]
+]
+
+var wings = [
+    [0,132], 
+    [14,129], 
+    [12,109], 
+    [0,100], 
+    [-12,109], 
+    [-14,129]
+]
+
+var body = [
+    [-3,131.4], 
+    [0,132], 
+    [3,131.4], 
+    [6,40], 
+    [3,30], 
+    [-3,30], 
+    [-6,40]
+]
 
 $(document).ready(function() {
     var canvas = $("#canvas")[0];
     var ctx = canvas.getContext("2d");
     drawBoard();
-    drawDart(0,0);
     
     $(canvas).click((e) => {
         let mouseX = e.offsetX;
         let mouseY = e.offsetY;
         
         moveDart(mouseX, mouseY);
-        setInterval(moveDart,10)
     });
 
     function moveDart(mouseX, mouseY) {
-        console.log("canvas click" + mouseX + ":" + mouseY)
-        drawBoard() 
+        
+        drawDart(mouseX, mouseY) 
     }
 
     function drawBoard() {
-        radii = [160, 144, 88, 72, 16, 4]
-        colors = ["#404040", "#F7F6DC"]
-        ctx.strokeStyle="#ff0000"
-        for (let i = 0; i < radii.length; i++) {
+        ctx.strokeStyle="black";
+        ctx.lineWidth = 1;
+        for (let i = 0; i < boardRadii.length; i++) {
             ctx.beginPath();
-            ctx.fillStyle = colors[i%2]
-            ctx.arc(300, 300, radii[i], 0, 2*Math.PI);
+            ctx.fillStyle = boardColors[i%2]
+            ctx.arc(300, 300, boardRadii[i], 0, 2*Math.PI);
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
@@ -34,41 +58,24 @@ $(document).ready(function() {
     }
     
     function drawDart(x,y) {
-        ctx.fillStyle = 'black';
         ctx.strokeStyle="black";
         ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(30+1.5+x,630+y);
-        ctx.lineTo(30+0+x,600+y);
-        ctx.lineTo(30-1.5+x,630+y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-        
-        ctx.fillStyle = 'grey';
-        ctx.beginPath();
-        ctx.moveTo(30+0+x,732+y);
-        ctx.lineTo(30+14+x,729+y)
-        ctx.lineTo(30+12+x,709+y);
-        ctx.lineTo(30+0+x,700+y);
-        ctx.lineTo(30-12+x,709+y);
-        ctx.lineTo(30-14+x,729+y);  
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
 
+        ctx.fillStyle = 'black';
+        drawDartPart(x, y, needle)
         ctx.fillStyle = 'grey';
+        drawDartPart(x, y, wings)
+        drawDartPart(x, y, body)
+    }
+
+    function drawDartPart(x,y, dartPart) {
         ctx.beginPath();
-        ctx.moveTo(30-3+x,731.4+y);
-        ctx.lineTo(30+0+x,732+y)
-        ctx.lineTo(30+3+x,731.4+y);
-        ctx.lineTo(30+6+x,640+y);
-        ctx.lineTo(30+3+x,630+y);
-        ctx.lineTo(30-3+x,630+y);  
-        ctx.lineTo(30-6+x,640+y); 
+        for (let i = 0; i < dartPart.length; i++) {
+            ctx.lineTo(dartPart[i][0]+x, dartPart[i][1]+y)
+        }   
         ctx.closePath();
         ctx.fill();
-        ctx.stroke();
+        ctx.stroke()
     }
 
 });
