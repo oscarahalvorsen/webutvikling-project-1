@@ -1,20 +1,23 @@
 $(document).ready(function() {
-    let blade1 = $("#blade1")
-    blade1.click(function(e) {
+    let svg = $("#svg")
+    svg.click(function(e) {
         let mouseX = e.offsetX;
         let mouseY = e.offsetY;
-        moveBlade(mouseX, mouseY);
-    });
+        moveDart(mouseX, mouseY);
 
-    function moveBlade(x, y) {
-        
-        dot.setAttribute("cx", x);
-        dot.setAttribute("cy", y);
-        dot.setAttribute("r", "2");
-        dot.setAttribute("stroke", "black");
-        dot.setAttribute("stroke-width", "5");
-        svgSnowman.append(dot);
+    })
+    function moveDart(mouseX, mouseY) {
+        $(dart).animate({
+            y: mouseY-600
+        }, 
+        {   
+            step: function(y, fy) {
+                $(this).css({
+                transform: 'translate('+mouseX+'px, '+y+'px)'
+                });
+            },
+            duration:'slow'
+            },'linear',
+        );
     }
-
-    
 });
