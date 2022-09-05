@@ -27,11 +27,13 @@ var body = [
     [-6,40]
 ]
 
+var dartList = []
+
 $(document).ready(function() {
     var canvas = $("#canvas")[0];
     var ctx = canvas.getContext("2d");
     drawBoard();
-    
+
     $(canvas).click((e) => {
         let mouseX = e.offsetX;
         let mouseY = e.offsetY;
@@ -41,12 +43,23 @@ $(document).ready(function() {
 
     function moveDart(mouseX, mouseY) {
         
-        drawDart(mouseX, mouseY) 
+        for (let i = 0; i < 600; i++) {
+            setTimeout(function() {
+                drawBoard()
+                for (let i = 0; i < dartList.length-1; i++) {
+                    drawDart(dartList[i][0], dartList[i][1])
+                }
+                drawDart(mouseX, mouseY+600-(i+1))
+            }, 1)
+        }
+        dartList.push([mouseX, mouseY])
     }
 
     function drawBoard() {
         ctx.strokeStyle="black";
+        ctx.fillStyle=boardColors[1]
         ctx.lineWidth = 1;
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         for (let i = 0; i < boardRadii.length; i++) {
             ctx.beginPath();
             ctx.fillStyle = boardColors[i%2]
