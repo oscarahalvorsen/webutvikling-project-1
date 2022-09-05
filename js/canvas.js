@@ -43,13 +43,13 @@ $(document).ready(function() {
 
     function moveDart(mouseX, mouseY) {
         
-        for (let i = 0; i < 600; i++) {
+        for (let i = 0; i < 601; i++) {
             setTimeout(function() {
                 drawBoard()
-                for (let i = 0; i < dartList.length-1; i++) {
-                    drawDart(dartList[i][0], dartList[i][1])
+                for (let j = 0; j < dartList.length-1; j++) {
+                    drawDart(dartList[j][0], dartList[j][1])
                 }
-                drawDart(mouseX, mouseY+600-(i+1))
+                drawDart(mouseX, mouseY+600-i)
             }, 1)
         }
         dartList.push([mouseX, mouseY])

@@ -43,10 +43,17 @@ h1, h2, h3, p {
     
   }
 
-.dart {
+.svg {
     width: 600px;
     height: 600px;
     position: absolute;
-    left: 0px;
+    left: 80px;
     top: 0px;
+}
+
+#svg-div {
+    display: inline-block;
+    height: 600px;
+    width: 600px;
+    position: relative;
 }
