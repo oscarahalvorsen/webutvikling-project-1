@@ -42,3 +42,11 @@ h1, h2, h3, p {
     width: 50%;
     
   }
+
+.dart {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
