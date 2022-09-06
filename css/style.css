@@ -28,19 +28,6 @@ svg, canvas {
 h1, h2, h3, p {
     text-align: center;
 }
-/* 
-.flexbox {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    justify-items: center 
-    flex-flow: column wrap
-}
-.flexbox > div {
-    flex: 1;
-    display: flex;
-} 
-*/
 
 .left-div {
     

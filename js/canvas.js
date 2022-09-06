@@ -43,13 +43,13 @@ $(document).ready(function() {
 
     function moveDart(mouseX, mouseY) {
         
-        for (let i = 0; i < 601; i++) {
+        for (let i = 0; i < 501; i++) {
             setTimeout(function() {
                 drawBoard()
                 for (let j = 0; j < dartList.length-1; j++) {
                     drawDart(dartList[j][0], dartList[j][1])
                 }
-                drawDart(mouseX, mouseY+600-i)
+                drawDart(mouseX, mouseY+500-i)
             }, 1)
         }
         dartList.push([mouseX, mouseY])
@@ -63,7 +63,7 @@ $(document).ready(function() {
         for (let i = 0; i < boardRadii.length; i++) {
             ctx.beginPath();
             ctx.fillStyle = boardColors[i%2]
-            ctx.arc(300, 300, boardRadii[i], 0, 2*Math.PI);
+            ctx.arc(250, 250, boardRadii[i], 0, 2*Math.PI);
             ctx.closePath();
             ctx.fill();
             ctx.stroke();

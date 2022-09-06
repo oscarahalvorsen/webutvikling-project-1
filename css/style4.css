@@ -30,8 +30,6 @@
                 'header header'
                 'left right'
                 'footer footer';
-            gap: 10px;
-            background-color: #404040;
         }
 
         .grid-container > div {
@@ -42,20 +40,48 @@
 
         #svg-div {
             display: inline-block;
-            height: 600px;
-            width: 600px;
+            height: 500px;
+            width: 500px;
             position: relative;
         }
 
         .svg {
-            height: 600px;
-            width: 600px;
+            height: 500px;
+            width: 500px;
             position: absolute;
             left: 0px;
             top: 0px;
         }
 
-        @media only screen and (max-width: 1200px) {
+        h2 {
+            position: relative;
+
+
+        }
+
+        canvas, #svg-div {
+            border: 20px solid #404040;
+        }
+
+        button {
+            background-color: #404040;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 15px;
+          }
+        
+        button:hover {
+            background-color: #B20600;
+            color: white;
+          }
+
+        @media only screen and (max-width: 1100px) {
             .grid-container {
                 display: grid;
                 grid-template-areas:
@@ -63,7 +89,5 @@
                     'left left'
                     'right right'
                     'footer footer';
-                gap: 10px;
-                background-color: #404040;
             }
         }
