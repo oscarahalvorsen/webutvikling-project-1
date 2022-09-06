@@ -11,7 +11,7 @@ $(document).ready(function() {
     })
     function moveDart(mouseX, mouseY) {
         $(dart).animate({
-            y: mouseY-600
+            y: mouseY-500
         }, 
         {   
             step: function(y, fy) {

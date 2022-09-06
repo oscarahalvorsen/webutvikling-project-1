@@ -4,13 +4,15 @@
     <title>Darts</title>
     <link rel="stylesheet" href="css/style4.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="js/svg.js"></script>
-    <script src="js/canvas.js"></script>
+    <script src="js/dartcanvas.js"></script>
+    <script src="js/dartsvg.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     <div class="grid-container">
         <div class="header">
             <h1 id="header">DARTS</h1>
+            <p>I like darts</p>
         </div>
         <div class="left">
             <div id="svg-div">
@@ -31,8 +33,44 @@
             <canvas class="center" id="canvas" width="500" height="500"></canvas>
             <h2>Canvas</h2>
         </div>
-        <div class="footer">
-            <button>Documentation</button>
+        <div  class="footer">
+            <button id="documentation-btn">Show documentation</button>
+            
+            <div id="documentation" style="display: none">
+                <h3>Grid and Flexbox</h3>
+                <p> I used a CSS-Grid as a container for all the elements on the page. The grid positions the elements correctly in relation to each other without having to use “hacks” such as floats or tables. The grid has originally two columns and four
+                    rows. All the elements span both the columns except for the SVG and Canvas elements which has one column each. I use “fr” to divide the height of the screen accordingly to each element in css and the columns cover 50% each. To correctly
+                    place the elements within each row I am using flex-boxes. For example I am using a vertical flex-box with the header and the paragraph underneath centering it with “justify-content: center;” in the “.vertical-flex-box”. To be able
+                    to wrap the content in the grid correctly on resizing to smaller widths I am using the “media only screen and (max-width: 600px)” in the CSS-file which converts the grid to one column and five rows if the window-size is less than 600
+                    px, this makes the paintings wrap under each other correctly instead of just starting to go over each other and this should even work well on mobiles.
+                </p>
+                <h3>Canvas</h3>
+                <p>
+                    For the Canvas-painting I am just using an html-element where I define the width and height of the painting and the id, everything else is inside a JS-file with the name “snowmanCanvas.js” which is added using the src-tag. In the JS-file I first define
+                    some constants like head, upperBody, lowerBody and crystals where I define coordinates, radius and other constants which are used to draw them on the screen. I created a draw function for each individual part of the painting like “drawHead()”
+                    and “drawCrystals()” so I can easily reuse them when redrawing since I added some interactivity on the canvas using jQuery. I added an eventlistener using jQuery with $(“#snowmanCanvas”).on(“mouseenter”, function) which will redraw
+                    the crystals with a random color every 100 ms using javascript’s setInterval() function, this interval is cleared when the mouse leaves the canvas using $(“#snowmanCanvas”).on(“mouseleave”, function). It is also possible to add “buttons”
+                    to the snowman by clicking on the lower body or upper body, this is done by adding an event listener for click on the canvas using $(“#snowmanCanvas”).click(), in this function I check if the click-coordinates intersects the upper
+                    body or lower body, but not the head and if that is correct it will draw a dot on the click-coordinates, if the click only intersects the head it will turn the head red, another click will return it to white.
+
+                </p>
+                <h3>SVG</h3>
+                <p>
+                    The SVG-image is mainly defined in the html-document unlike the canvas. I added the body as circle-elements, the arms as a combination of line-elements and the crystals as polygon -elements. Compared to the canvas the SVG had less pixelation and the painting
+                    seems clearer. To add interactivity to the painting I used a JS-file called “snowmanSVG.js”. I added a event listener using $(“svgHead”).click() to the circle representing the head which will change the CSS of the circle to red using
+                    $(“svgHead”).css({ fill: “red” }) or return it to white if it was red. The same kind of event listeners are added to the circles with id #svgUpperBody and #svgLowerBody, here I add a circle using document.createElementNS(“http://www.w3.org/2000/svg”,
+                    “circle”) and appending it to the svg-element using jQuery: $(“#svgSnowman”).append(). To make the colorful crystals I use the same kind of event listeners as in the canvas, but instead of redrawing them I just change the fill of the
+                    polygons using jQuery’s .css() function.
+                </p>
+                <h3>Other interactivity</h3>
+                <p>
+                    To make the page more interactive I added a scroll animation when the user click “Show documentation”, this scrolls down to the documentation so that the user doesn’t have to. This is done by first displaying the documentation using the jQuery function
+                    .show() on the documentation element. Then the scroll animation is done with the jQuery function .animate() and the text in the button is changed using .html(). When hiding the documentation the function .hide() is called instead and
+                    the page will scroll to the top and change the text again. I also added a “sticky” functionality to the documentation-button. This means that when the user starts to scroll by the documentation-button the button will stick to the top
+                    of the screen, this is done by adding a sticky-class which is defined in the css-file to the button using the jQuery-function .addClass(“sticky”). This is so the user easily can hide the documentation and go back to the top without
+                    having to do any scrolling.
+                </p>
+            </div>
         </div>
     </div>
 </body>
