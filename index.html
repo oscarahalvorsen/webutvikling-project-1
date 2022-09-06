@@ -1,38 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>  
 <head>
-    <title>Wind simulator</title>
+    <title>Darts</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="js/svg.js"></script>
-    <script src="js/canvas.js"></script>
+    <script src="js/dartcanvas.js"></script>
+    <script src="js/dartsvg.js"></script>
+    <script src="js/script.js"></script>
 </head>
-
 <body>
-    <div class="container " id="container">
+    <div class="grid-container">
         <div class="header">
-            <h1 id="header">DARTS</h1>
+            <h1 id="header">DART GAME</h1>
+            <p>-By world dart chamption Peter Wright</p>
         </div>
-        <div class="left-div">
+        <div class="left">
             <div id="svg-div">
-                <svg class="svg">
+                <svg class="svg" id="svg">
                     <g id="board">
-                        <circle cx="300" cy="300" r="160" fill="#404040" stroke-width="1px" stroke="black"/>
-                        <circle cx="300" cy="300" r="144" fill="#F7F6DC" stroke-width="1px" stroke="black"/>
-                        <circle cx="300" cy="300" r="88" fill="#404040" stroke-width="1px" stroke="black"/>
-                        <circle cx="300" cy="300" r="72" fill="#F7F6DC" stroke-width="1px" stroke="black"/>
-                        <circle cx="300" cy="300" r="16" fill="#404040" stroke-width="1px" stroke="black"/>
-                        <circle cx="300" cy="300" r="4" fill="#F7F6DC" stroke-width="1px" stroke="black"/>
+                        <circle cx="250" cy="250" r="160" fill="#404040" stroke-width="1px" stroke="black"/>
+                        <circle cx="250" cy="250" r="144" fill="#F7F6DC" stroke-width="1px" stroke="black"/>
+                        <circle cx="250" cy="250" r="88" fill="#404040" stroke-width="1px" stroke="black"/>
+                        <circle cx="250" cy="250" r="72" fill="#F7F6DC" stroke-width="1px" stroke="black"/>
+                        <circle cx="250" cy="250" r="16" fill="#404040" stroke-width="1px" stroke="black"/>
+                        <circle cx="250" cy="250" r="4" fill="#F7F6DC" stroke-width="1px" stroke="black"/>
                     </g>
                 </svg>
             </div>
-            <h2>SVG</h2>
+            <p><a id="svg-btn" class="button">Reset SVG</a></p>
+        </div>  
+        <div class="right">
+            <canvas class="center" id="canvas" width="500" height="500"></canvas>
+            <p><a id="canvas-btn" class="button">Reset CANVAS</a></p>
         </div>
-        <div class="right-div">
-            <canvas class="center" id="canvas" width="600" height="600"></canvas>
-            <h2>CANVAS</h2>
+        <div id="footer" class="footer">
+            <a href="#documentation-btn" id="documentation-btn" class="button">Show documentation</a>
+            
+            <div id="documentation" style="display: none">
+                <h3>Layout</h3>
+                <p> This website uses a css-grid to create the layout of the page. Grid positioning is seen as the best way to places elements in relation to each other on a 3d-grid. It removes the need to use absolute and relative positioning. 
+                    This page contains four elements: “header”, “left”, “right” and “footer”. The grid is split into two columns and three rown. 
+                    The header and the footer span both the columns of respectively the top and the bottom row. The middle row is however split into the right and the left element. 
+                    To correctly place these four element into the grid I use the css property “grid-template-areas”.
+                </p>
+                <p>
+                    To facilitate smaller screens this page uses “media only screen and (max-width: 1100px)”, which changes the layout of the page if the width of the screen is less than 110px. 
+                    In this case the grid instead contains one column and four rows, with one row for each element. The element are thus stacked on top of each other.                    
+                </p>
+                <h3>SVG</h3>
+                <p>
+                    The svg-image contains multiple svg-elements that are enclosed in a div-tag with id=”svg-div”. The dart board is defined in the html as one svg-element. It consists of multiple circles layered on top of each other. 
+                </p>
+                <p>
+                    The darts are however defined in a separate JavaScript file called dartsvg.js. When one clicks on svg-div a dart appears from below that moves into the point where one clicked. This is done by the function svgdiv.click(function(e) {foo}, that takes in an event e. 
+                    The event e has the properties offsetX and offsetY that return the coordinates of the pointer when the event took place. Then an instance of the dart-svg is appended to svgdiv. 
+                    A function called moveDart() subsequently moves the dart-svg to its correct position by using the built in jQuery method called animate(). 
+                </p>
+                    One can also reset the svg dart board by pressing the “Reset SVG”-button, which deletes all the dart-svg with the built in jQuery method called remove().
+                </p>
+                <h3>Canvas</h3>
+                <p>
+                    The canvas is almost exclusively drawn in a separate JavaScript file called dartcanvas.js. Only the canvas-element itself is defined in the html-file. The board is drawn by the function drawBoard() and the darts is drawn by the function drawDart(). 
+                    To draw they use the simple built in canvas functions beginPath(), lineTo(), arc(), closePath, fill() and stroke().
+                <p>
+                    The event listening is done in the same manner as the svg drawing. The animation is achieved by moving the darts pixel by pixel and drawing the whole drawing for each time the dart moves one step. This is achieved by using a for loop and a setTimout() function inside it. 
+                    The coordinate of the dart is then saved in a list called dartList. From then on, each time a new dart animation is drawn, all the old darts will still be drawn since their coordinates are saved. 
+                </p>
+                <p>
+                    One can also reset the canvas dart board, by pressing the “Reset CANVAS”-button, which redraws the board and removes all elements in the dartList. 
+                </p>
+                <h3>Other interactivity</h3>
+                <p>
+                    The “show documentation”-button shows documentation on the page. The button text also changes to “hide documentation”. When pressed again the text changes back and the documentation disappears. This is done by using the built in jQuery functions .show() and hide(). 
+                    To make the page more fluid a scroll function is added when clicked on the button, that scrolls down to the documentation so the user doesn’t have to. This is done in html and css. The button is in reality an a-tag, that moved the page to the documentation. 
+                    The css attribute “scroll-behavior: smooth” in body makes the page scroll to the documentation smoothly.
+                </p>
+            </div>
         </div>
     </div>
 </body>
 </html>
+

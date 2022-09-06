@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Monaco', monospace;  
     min-height: 100%;
@@ -8,52 +9,94 @@ body {
 }
 
 html {
-    height: 100%;
-    width: 100%;
-}
+    scroll-behavior: smooth;
+  }  
 
-svg, canvas {
-    display: block;
-    margin: auto;
-}
-
-.header {
+.header { 
     grid-area: header;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-h1, h2, h3, p {
+.left { 
+    grid-area: left; 
+}
+
+.right { 
+    grid-area: right; 
+}
+
+.footer { 
+    grid-area: footer; 
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'left right'
+        'footer footer';
+}
+
+.grid-container > div {
+    background-color: #F7F6DC;
     text-align: center;
-}
-
-.left-div {
-    
-    position: absolute;
-    left: 0px;
-    width: 50%;
-  }
-  
-.right-div {
-    position: absolute;
-    right: 0px;
-    width: 50%;
-    
-  }
-
-.svg {
-    width: 600px;
-    height: 600px;
-    position: absolute;
-    left: 80px;
-    top: 0px;
+    padding: 0px;
 }
 
 #svg-div {
     display: inline-block;
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
     position: relative;
+}
+
+.svg {
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+canvas, #svg-div {
+    border: 20px ridge #404040;
+}
+
+.button {
+    background-color: #404040;
+    color: white;
+    text-decoration: inherit;
+    border: none;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    position: relative;
+    top: -20px; 
+    margin-bottom: -20px;
+    }
+
+.button:hover {
+    background-color: #B20600;
+    }
+
+
+
+
+@media only screen and (max-width: 1100px) {
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'header'
+            'left'
+            'right'
+            'footer';
+    }
+
+    .button {
+        top: 0px;
+        margin-bottom: 0px;
+    }
 }
