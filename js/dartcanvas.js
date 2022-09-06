@@ -76,7 +76,7 @@ $(document).ready(function() {
 
         ctx.fillStyle = 'black';
         drawDartPart(x, y, needle)
-        ctx.fillStyle = 'grey';
+        ctx.fillStyle = '#B20600';
         drawDartPart(x, y, wings)
         drawDartPart(x, y, body)
     }
@@ -90,5 +90,10 @@ $(document).ready(function() {
         ctx.fill();
         ctx.stroke()
     }
+
+    $( "#canvas-btn" ).click(function() {
+        drawBoard()
+        dartList = []
+    });
 
 });

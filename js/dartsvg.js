@@ -4,12 +4,13 @@ $(document).ready(function() {
     svgdiv.click(function(e) {
         let mouseX = e.offsetX;
         let mouseY = e.offsetY;
-        $(svgdiv).append('<svg class="svg"><g id="dart" transform="translate(300,0)"><polygon points="1.5,630 0.1,600 -0.1,600 -1.5,630" fill="black" ></polygon><polygon points="0,732 14,729 12,709 0,700 -12,709 -14,729" fill="grey" stroke="black" stroke-width="0.5px"></polygon><polygon points="-3,731.4 0,732 3,731.4 6,640 3,630 -3,630 -6,640" fill="grey" stroke="black" stroke-width="0.5px" /></g> </svg>')
+        $(svgdiv).append('<svg class="svg"><g id="dart" class="dart" transform="translate(300,0)"><polygon points="1.5,630 0.1,500 -0.1,500 -1.5,530" fill="black" ></polygon><polygon points="0,632 14,629 12,609 0,600 -12,609 -14,629" fill="#B20600" stroke="black" stroke-width="0.5px"></polygon><polygon points="-3,631.4 0,632 3,631.4 6,540 3,530 -3,530 -6,540" fill="#B20600" stroke="black" stroke-width="0.5px" /></g> </svg>')
         moveDart(mouseX, mouseY);
         $(dart).removeAttr('id')
 
     })
     function moveDart(mouseX, mouseY) {
+        console.log(mouseX + ":" + mouseY)
         $(dart).animate({
             y: mouseY-500
         }, 
@@ -23,4 +24,9 @@ $(document).ready(function() {
             },'linear',
         );
     }
+
+    $( "#svg-btn" ).click(function() {
+        $(".dart").remove();
+        
+    });
 });

@@ -11,8 +11,8 @@
 <body>
     <div class="grid-container">
         <div class="header">
-            <h1 id="header">DARTS</h1>
-            <p>I like darts</p>
+            <h1 id="header">DART GAME</h1>
+            <p>-By world dart chamption Peter Wright</p>
         </div>
         <div class="left">
             <div id="svg-div">
@@ -27,48 +27,53 @@
                     </g>
                 </svg>
             </div>
-            <h2>SVG</h2>
+            <p><a id="svg-btn" class="button">Reset SVG</a></p>
         </div>  
         <div class="right">
             <canvas class="center" id="canvas" width="500" height="500"></canvas>
-            <h2>Canvas</h2>
+            <p><a id="canvas-btn" class="button">Reset CANVAS</a></p>
         </div>
-        <div  class="footer">
-            <button id="documentation-btn">Show documentation</button>
+        <div id="footer" class="footer">
+            <a href="#documentation-btn" id="documentation-btn" class="button">Show documentation</a>
             
             <div id="documentation" style="display: none">
-                <h3>Grid and Flexbox</h3>
-                <p> I used a CSS-Grid as a container for all the elements on the page. The grid positions the elements correctly in relation to each other without having to use “hacks” such as floats or tables. The grid has originally two columns and four
-                    rows. All the elements span both the columns except for the SVG and Canvas elements which has one column each. I use “fr” to divide the height of the screen accordingly to each element in css and the columns cover 50% each. To correctly
-                    place the elements within each row I am using flex-boxes. For example I am using a vertical flex-box with the header and the paragraph underneath centering it with “justify-content: center;” in the “.vertical-flex-box”. To be able
-                    to wrap the content in the grid correctly on resizing to smaller widths I am using the “media only screen and (max-width: 600px)” in the CSS-file which converts the grid to one column and five rows if the window-size is less than 600
-                    px, this makes the paintings wrap under each other correctly instead of just starting to go over each other and this should even work well on mobiles.
+                <h3>Layout</h3>
+                <p> This website uses a css-grid to create the layout of the page. Grid positioning is seen as the best way to places elements in relation to each other on a 3d-grid. It removes the need to use absolute and relative positioning. 
+                    This page contains four elements: “header”, “left”, “right” and “footer”. The grid is split into two columns and three rown. 
+                    The header and the footer span both the columns of respectively the top and the bottom row. The middle row is however split into the right and the left element. 
+                    To correctly place these four element into the grid I use the css property “grid-template-areas”.
                 </p>
-                <h3>Canvas</h3>
                 <p>
-                    For the Canvas-painting I am just using an html-element where I define the width and height of the painting and the id, everything else is inside a JS-file with the name “snowmanCanvas.js” which is added using the src-tag. In the JS-file I first define
-                    some constants like head, upperBody, lowerBody and crystals where I define coordinates, radius and other constants which are used to draw them on the screen. I created a draw function for each individual part of the painting like “drawHead()”
-                    and “drawCrystals()” so I can easily reuse them when redrawing since I added some interactivity on the canvas using jQuery. I added an eventlistener using jQuery with $(“#snowmanCanvas”).on(“mouseenter”, function) which will redraw
-                    the crystals with a random color every 100 ms using javascript’s setInterval() function, this interval is cleared when the mouse leaves the canvas using $(“#snowmanCanvas”).on(“mouseleave”, function). It is also possible to add “buttons”
-                    to the snowman by clicking on the lower body or upper body, this is done by adding an event listener for click on the canvas using $(“#snowmanCanvas”).click(), in this function I check if the click-coordinates intersects the upper
-                    body or lower body, but not the head and if that is correct it will draw a dot on the click-coordinates, if the click only intersects the head it will turn the head red, another click will return it to white.
-
+                    To facilitate smaller screens this page uses “media only screen and (max-width: 1100px)”, which changes the layout of the page if the width of the screen is less than 110px. 
+                    In this case the grid instead contains one column and four rows, with one row for each element. The element are thus stacked on top of each other.                    
                 </p>
                 <h3>SVG</h3>
                 <p>
-                    The SVG-image is mainly defined in the html-document unlike the canvas. I added the body as circle-elements, the arms as a combination of line-elements and the crystals as polygon -elements. Compared to the canvas the SVG had less pixelation and the painting
-                    seems clearer. To add interactivity to the painting I used a JS-file called “snowmanSVG.js”. I added a event listener using $(“svgHead”).click() to the circle representing the head which will change the CSS of the circle to red using
-                    $(“svgHead”).css({ fill: “red” }) or return it to white if it was red. The same kind of event listeners are added to the circles with id #svgUpperBody and #svgLowerBody, here I add a circle using document.createElementNS(“http://www.w3.org/2000/svg”,
-                    “circle”) and appending it to the svg-element using jQuery: $(“#svgSnowman”).append(). To make the colorful crystals I use the same kind of event listeners as in the canvas, but instead of redrawing them I just change the fill of the
-                    polygons using jQuery’s .css() function.
+                    The svg-image contains multiple svg-elements that are enclosed in a div-tag with id=”svg-div”. The dart board is defined in the html as one svg-element. It consists of multiple circles layered on top of each other. 
+                </p>
+                <p>
+                    The darts are however defined in a separate JavaScript file called dartsvg.js. When one clicks on svg-div a dart appears from below that moves into the point where one clicked. This is done by the function svgdiv.click(function(e) {foo}, that takes in an event e. 
+                    The event e has the properties offsetX and offsetY that return the coordinates of the pointer when the event took place. Then an instance of the dart-svg is appended to svgdiv. 
+                    A function called moveDart() subsequently moves the dart-svg to its correct position by using the built in jQuery method called animate(). 
+                </p>
+                    One can also reset the svg dart board by pressing the “Reset SVG”-button, which deletes all the dart-svg with the built in jQuery method called remove().
+                </p>
+                <h3>Canvas</h3>
+                <p>
+                    The canvas is almost exclusively drawn in a separate JavaScript file called dartcanvas.js. Only the canvas-element itself is defined in the html-file. The board is drawn by the function drawBoard() and the darts is drawn by the function drawDart(). 
+                    To draw they use the simple built in canvas functions beginPath(), lineTo(), arc(), closePath, fill() and stroke().
+                <p>
+                    The event listening is done in the same manner as the svg drawing. The animation is achieved by moving the darts pixel by pixel and drawing the whole drawing for each time the dart moves one step. This is achieved by using a for loop and a setTimout() function inside it. 
+                    The coordinate of the dart is then saved in a list called dartList. From then on, each time a new dart animation is drawn, all the old darts will still be drawn since their coordinates are saved. 
+                </p>
+                <p>
+                    One can also reset the canvas dart board, by pressing the “Reset CANVAS”-button, which redraws the board and removes all elements in the dartList. 
                 </p>
                 <h3>Other interactivity</h3>
                 <p>
-                    To make the page more interactive I added a scroll animation when the user click “Show documentation”, this scrolls down to the documentation so that the user doesn’t have to. This is done by first displaying the documentation using the jQuery function
-                    .show() on the documentation element. Then the scroll animation is done with the jQuery function .animate() and the text in the button is changed using .html(). When hiding the documentation the function .hide() is called instead and
-                    the page will scroll to the top and change the text again. I also added a “sticky” functionality to the documentation-button. This means that when the user starts to scroll by the documentation-button the button will stick to the top
-                    of the screen, this is done by adding a sticky-class which is defined in the css-file to the button using the jQuery-function .addClass(“sticky”). This is so the user easily can hide the documentation and go back to the top without
-                    having to do any scrolling.
+                    The “show documentation”-button shows documentation on the page. The button text also changes to “hide documentation”. When pressed again the text changes back and the documentation disappears. This is done by using the built in jQuery functions .show() and hide(). 
+                    To make the page more fluid a scroll function is added when clicked on the button, that scrolls down to the documentation so the user doesn’t have to. This is done in html and css. The button is in reality an a-tag, that moved the page to the documentation. 
+                    The css attribute “scroll-behavior: smooth” in body makes the page scroll to the documentation smoothly.
                 </p>
             </div>
         </div>
