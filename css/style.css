@@ -82,6 +82,16 @@ canvas, #svg-div {
     background-color: #B20600;
     }
 
+#documentation {
+    text-align: left;
+    color: white;
+    background-color: #404040;
+    margin: 30px;
+    padding: 20px;
+    border: 1px;
+    border-style: black;
+    border-radius: 20px;
+}
 
 
 

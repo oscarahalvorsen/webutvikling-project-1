@@ -47,6 +47,7 @@
                     To facilitate smaller screens this page uses “media only screen and (max-width: 1100px)”, which changes the layout of the page if the width of the screen is less than 110px. 
                     In this case the grid instead contains one column and four rows, with one row for each element. The element are thus stacked on top of each other.                    
                 </p>
+                <br>
                 <h3>SVG</h3>
                 <p>
                     The svg-image contains multiple svg-elements that are enclosed in a div-tag with id=”svg-div”. The dart board is defined in the html as one svg-element. It consists of multiple circles layered on top of each other. 
@@ -58,6 +59,7 @@
                 </p>
                     One can also reset the svg dart board by pressing the “Reset SVG”-button, which deletes all the dart-svg with the built in jQuery method called remove().
                 </p>
+                <br>
                 <h3>Canvas</h3>
                 <p>
                     The canvas is almost exclusively drawn in a separate JavaScript file called dartcanvas.js. Only the canvas-element itself is defined in the html-file. The board is drawn by the function drawBoard() and the darts is drawn by the function drawDart(). 
@@ -69,6 +71,7 @@
                 <p>
                     One can also reset the canvas dart board, by pressing the “Reset CANVAS”-button, which redraws the board and removes all elements in the dartList. 
                 </p>
+                <br>
                 <h3>Other interactivity</h3>
                 <p>
                     The “show documentation”-button shows documentation on the page. The button text also changes to “hide documentation”. When pressed again the text changes back and the documentation disappears. This is done by using the built in jQuery functions .show() and hide(). 

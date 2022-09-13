@@ -25,8 +25,11 @@ $(document).ready(function() {
         );
     }
 
-    $( "#svg-btn" ).click(function() {
-        $(".dart").remove();
-        
+    $("#svg-btn").click(function () {
+        $("svg").each(function () {
+            if (this.id != "svg") {
+                this.remove();
+            }
+        });
     });
 });
